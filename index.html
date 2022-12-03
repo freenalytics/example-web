@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/freenalytics/freenalytics-connector-web@v1.0.0/connector.min.js"></script>
+    <script type="text/javascript" src="/analytics.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <-- Web Example -->
+        </div>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a href="/" class="navbar-item">
+            Home
+          </a>
+
+          <a href="/article" class="navbar-item">
+            Example Article
+          </a>
+
+          <a href="/about" class="navbar-item">
+            About
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <a href="https://github.com/freenalytics/example-web" class="navbar-item">
+            Web Example Repo
+          </a>
+
+          <a href="https://github.com/freenalytics/freenalytics-connector-web" class="navbar-item">
+            Connector Repo
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="content my-4">
+        <h1 class="title is-2">
+          Web Example
+        </h1>
+
+        <h2 class="title is-3">
+          Setting-up Your Application
+        </h2>
+
+        <p>
+          In order to use this connector library, you should use the Official Web Template when creating your application.
+
+          This library will follow the following schema
+        </p>
+
+        <pre>
+type: object
+properties:
+  page_title:
+    type: string
+  url_route:
+    type: string
+  user_time_in_page:
+    type: number
+  user_scrolled:
+    type: boolean
+  user_first_visit:
+    type: boolean
+  user_location:
+    type: string
+  referrer:
+    type: string
+  num_of_clicks:
+    type: integer
+  element_clicked:
+    type: object
+    properties:
+      url_route:
+        type: string
+      tag_name:
+        type: string
+      class_name:
+        type: string
+      id:
+        type: string
+      page_x:
+        type: integer
+      page_y:
+        type: integer
+      client_x:
+        type: integer
+      client_y:
+        type: integer
+        </pre>
+
+        <h2 class="title is-3">
+          Usage
+        </h2>
+
+        <p>
+          In order to integrate this library with your webpage, add the following tags inside your head tag in your html pages:
+        </p>
+
+        <pre>
+<&zwj;script type="text/javascript" src="https://cdn.jsdelivr.net/gh/freenalytics/freenalytics-connector-web@v1.0.0/connector.min.js"></&zwj;script>
+<&zwj;script type="text/javascript" src="/script.js"></&zwj;script>
+        </pre>
+
+        <p>
+          Notice that the second script tag points to a local script named script.js.
+
+          In this case, you need to instantiate the client with your information. An example of what this script.js file could look like:
+        </p>
+
+        <pre>
+const client = new freenalytics.Client({
+  apiUrl: 'http://localhost:4000/api',
+  domain: 'FD-107hpu34tlb7s7mro'
+});
+client.initialize();
+        </pre>
+
+        <p>
+          Once you have that set up, the client will automatically send relevant data periodically.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
